@@ -1,0 +1,45 @@
+.controls {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  background-color: #062c56;
+}
+
+.container {
+  width: 676px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.controls input {
+  width: 260px;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.controls input::-webkit-outer-spin-button,
+.controls input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.controls input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.controls button {
+  width: 157px;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  background-color: #3884ff;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.03em;
+}

@@ -1,0 +1,53 @@
+.history {
+  width: 870px;
+  margin: 0 auto 30px;
+  border-collapse: collapse;
+  font-family: 'Roboto', sans-serif;
+}
+
+.history thead tr {
+  height: 67px;
+  background-color: #ebeef2;
+}
+
+.history th {
+  width: 290px;
+  border: 1px solid #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #272727;
+}
+
+.history th:first-child {
+  box-sizing: border-box;
+  text-align: left;
+  padding-left: 92px;
+  border-left: 1px solid #ebeef2;
+}
+
+.history th:last-child {
+  border-right: 1px solid #ebeef2;
+}
+
+.history tbody tr {
+  height: 71px;
+}
+
+.history td {
+  box-sizing: border-box;
+  text-align: center;
+  border: 1px solid #ebeef2;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.03em;
+  color: #5c6975;
+}
+
+.history td:first-child {
+  text-transform: capitalize;
+  padding-left: 92px;
+  text-align: left;
+}
