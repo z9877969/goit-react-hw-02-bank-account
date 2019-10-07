@@ -29,7 +29,7 @@ class Dashboard extends React.Component {
     });
 
   notifyInputInvalid = () =>
-    toast('Не корректная умма повторите ввод!', {
+    toast(`Введена не корректная сумма ${this.state.amount}. Повторите ввод!`, {
       containerId: 'amountControl',
     });
 
@@ -52,9 +52,13 @@ class Dashboard extends React.Component {
       time: timeTransaction.toLocaleString(),
     };
 
-    if (!Number(amount) || exp.test(amount)) {
-      this.setState({ amount: '' });
+    if (!Number(amount)) {
       return this.notifyAmountNull();
+    }
+
+    if (exp.test(amount)) {
+      this.setState({ amount: '' });
+      return this.notifyInputInvalid();
     }
 
     if (target.dataset.action === 'deposit') {
