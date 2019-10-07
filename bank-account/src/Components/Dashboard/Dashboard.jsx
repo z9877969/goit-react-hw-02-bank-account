@@ -28,19 +28,35 @@ class Dashboard extends React.Component {
       containerId: 'amountControl',
     });
 
-  handleInputChange = e => this.setState({ amount: e.target.value });
+  notifyInputInvalid = () =>
+    toast('Не корректная умма повторите ввод!', {
+      containerId: 'amountControl',
+    });
+
+  handleInputChange = ({ target }) => {
+    const { value } = target;
+    const amountInput = Number(value) >= 0 ? value : String(Math.abs(value));
+
+    return this.setState({
+      amount: amountInput,
+    });
+  };
 
   handleControlBtn = ({ target }) => {
     const timeTransaction = new Date();
     const { amount } = this.state;
+    const exp = /^0\d+/g;
     const transaction = {
       id: shortid.generate(),
-      amount: Number(this.state.amount),
+      amount: Number(amount),
       time: timeTransaction.toLocaleString(),
     };
-    if (!Number(this.state.amount)) {
+
+    if (!Number(amount) || exp.test(amount)) {
+      this.setState({ amount: '' });
       return this.notifyAmountNull();
     }
+
     if (target.dataset.action === 'deposit') {
       transaction.type = 'deposit';
       this.setState(prev => ({
@@ -51,7 +67,9 @@ class Dashboard extends React.Component {
       if (this.state.amount > this.state.balance) {
         return this.notifyNotWithdraw();
       }
+
       transaction.type = 'withdraw';
+
       this.setState(prev => ({
         balance: prev.balance - Number(amount),
         withdraw: prev.withdraw + Number(amount),
